@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalletLogsTable extends Migration
+class CreateTakesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateWalletLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallet_logs', function (Blueprint $table) {
+        Schema::create('takes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('member_id')->comment('會員ID');
-            $table->integer('type')->comment('類型');
-            $table->integer('amount')->comment('金額');
+            $table->integer('task_id')->comment('案件ID');
+            $table->integer('take_id')->comment('接案人ID');
+            $table->integer('price')->comment('報價金額');
             $table->string('memo')->comment('說明');
+            $table->integer('status')->comment('報價狀態');
             $table->string('created_at', 20)->comment('建立時間');
             $table->string('updated_at', 20)->comment('更新時間');
 
             $table->index([
-                'member_id',
+                'task_id', 'take_id',
             ]);
         });
     }
@@ -35,6 +36,6 @@ class CreateWalletLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallet_logs');
+        Schema::dropIfExists('takes');
     }
 }
