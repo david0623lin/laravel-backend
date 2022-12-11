@@ -175,6 +175,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Log Admin
+         * https://github.com/rap2hpoutre/laravel-log-viewer
+         */
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+
     ],
 
     /*
