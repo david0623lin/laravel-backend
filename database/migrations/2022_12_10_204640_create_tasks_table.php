@@ -33,7 +33,7 @@ class CreateTasksTable extends Migration
             $table->string('updated_at', 20)->comment('更新時間');
 
             $table->index([
-                'group', 'item', 'pre_pay_id', 'give_id', 'take_id',
+                'group', 'item', 'pre_pay_id', 'give_id', 'take_id', 'city',
             ]);
         });
     }
