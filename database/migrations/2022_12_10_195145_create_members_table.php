@@ -24,10 +24,10 @@ class CreateMembersTable extends Migration
             $table->string('id_card', 10)->comment('身分證');
             $table->string('birthday', 10)->comment('生日');
             $table->string('mail', 30)->comment('信箱');
-            $table->integer('phone')->comment('手機');
-            $table->string('img')->comment('大頭照');
+            $table->string('phone', 10)->comment('手機');
+            $table->string('img')->comment('大頭照')->default('');
             $table->string('line_id', 40)->comment('line_ID');
-            $table->integer('credit_id')->comment('信用卡ID');
+            $table->integer('credit_id')->comment('信用卡ID')->nullable();
             $table->integer('wallet')->comment('錢包餘額');
             $table->integer('status')->comment('會員狀態');
             $table->string('created_at', 20)->comment('建立時間');

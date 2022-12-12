@@ -15,9 +15,10 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('group')->comment('群組分類');
-            $table->integer('item')->comment('項目明細');
+            $table->integer('group_id')->comment('群組分類ID');
+            $table->integer('item_id')->comment('群組項目ID');
             $table->string('city', 10)->comment('城市');
+            $table->string('area', 10)->comment('地區');
             $table->integer('pre_pay_id')->comment('預算ID');
             $table->integer('amount')->comment('手續費');
             $table->json('detail')->comment('詳細資訊');
@@ -25,7 +26,7 @@ class CreateTasksTable extends Migration
             $table->integer('read_count_limit')->comment('可讀取報價人數上限');
             $table->integer('need_count')->comment('發案人需求人數');
             $table->integer('give_id')->comment('提案人ID');
-            $table->integer('take_id')->comment('接案人ID');
+            $table->integer('take_id')->comment('接案人ID')->nullable();
             $table->integer('new')->comment('新案件狀態');
             $table->integer('status')->comment('案件狀態');
             $table->string('close_at', 20)->comment('案件到期時間');
@@ -33,7 +34,7 @@ class CreateTasksTable extends Migration
             $table->string('updated_at', 20)->comment('更新時間');
 
             $table->index([
-                'group', 'item', 'pre_pay_id', 'give_id', 'take_id', 'city',
+                'group_id', 'item_id', 'pre_pay_id', 'give_id', 'take_id', 'city',
             ]);
         });
     }
